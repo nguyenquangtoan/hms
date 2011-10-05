@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tariff_name: MyString
+  start_date: 2011-10-03 14:48:27
+  expriry_date: 2011-10-03 14:48:27
+  status: false
+
+two:
+  tariff_name: MyString
+  start_date: 2011-10-03 14:48:27
+  expriry_date: 2011-10-03 14:48:27
+  status: false

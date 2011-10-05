@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tariff name:</b>
+  <%= @rate_card.tariff_name %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @rate_card.start_date %>
+</p>
+
+<p>
+  <b>Expriry date:</b>
+  <%= @rate_card.expriry_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @rate_card.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_rate_card_path(@rate_card) %> |
+<%= link_to 'Back', rate_cards_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guest: 
+  room: 
+  check_in: 2011-10-03 14:31:34
+  check_out: 2011-10-03 14:31:34
+  is_paid: false
+
+two:
+  guest: 
+  room: 
+  check_in: 2011-10-03 14:31:34
+  check_out: 2011-10-03 14:31:34
+  is_paid: false

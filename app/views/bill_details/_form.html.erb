@@ -1,0 +1,57 @@
+<%= form_for(@bill_detail) do |f| %>
+  <% if @bill_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill_detail.errors.count, "error") %> prohibited this bill_detail from being saved:</h2>
+
+      <ul>
+      <% @bill_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bill %><br />
+    <%= f.text_field :bill %>
+  </div>
+  <div class="field">
+    <%= f.label :occupancy %><br />
+    <%= f.text_field :occupancy %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br />
+    <%= f.text_field :destination %>
+  </div>
+  <div class="field">
+    <%= f.label :call_time %><br />
+    <%= f.datetime_select :call_time %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.text_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :begin_second_block %><br />
+    <%= f.text_field :begin_second_block %>
+  </div>
+  <div class="field">
+    <%= f.label :begin_block_rate %><br />
+    <%= f.text_field :begin_block_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :minute_rate %><br />
+    <%= f.text_field :minute_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :fixed_rate %><br />
+    <%= f.text_field :fixed_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

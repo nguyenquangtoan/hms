@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bill:</b>
+  <%= @bill_detail.bill %>
+</p>
+
+<p>
+  <b>Occupancy:</b>
+  <%= @bill_detail.occupancy %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @bill_detail.destination %>
+</p>
+
+<p>
+  <b>Call time:</b>
+  <%= @bill_detail.call_time %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @bill_detail.duration %>
+</p>
+
+<p>
+  <b>Begin second block:</b>
+  <%= @bill_detail.begin_second_block %>
+</p>
+
+<p>
+  <b>Begin block rate:</b>
+  <%= @bill_detail.begin_block_rate %>
+</p>
+
+<p>
+  <b>Minute rate:</b>
+  <%= @bill_detail.minute_rate %>
+</p>
+
+<p>
+  <b>Fixed rate:</b>
+  <%= @bill_detail.fixed_rate %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @bill_detail.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_detail_path(@bill_detail) %> |
+<%= link_to 'Back', bill_details_path %>

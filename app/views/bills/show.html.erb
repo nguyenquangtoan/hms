@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Guest:</b>
+  <%= @bill.guest %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @bill.total %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

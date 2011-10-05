@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bill: 
+  occupancy: 
+  destination: MyString
+  call_time: 2011-10-03 15:04:53
+  duration: 1
+  begin_second_block: 1
+  begin_block_rate: 1.5
+  minute_rate: 1.5
+  fixed_rate: 1.5
+  amount: 1.5
+
+two:
+  bill: 
+  occupancy: 
+  destination: MyString
+  call_time: 2011-10-03 15:04:53
+  duration: 1
+  begin_second_block: 1
+  begin_block_rate: 1.5
+  minute_rate: 1.5
+  fixed_rate: 1.5
+  amount: 1.5

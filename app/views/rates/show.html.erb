@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rate card:</b>
+  <%= @rate.rate_card %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @rate.type %>
+</p>
+
+<p>
+  <b>Prefix:</b>
+  <%= @rate.prefix %>
+</p>
+
+<p>
+  <b>Begin second block:</b>
+  <%= @rate.begin_second_block %>
+</p>
+
+<p>
+  <b>Begin block rate:</b>
+  <%= @rate.begin_block_rate %>
+</p>
+
+<p>
+  <b>Minute rate:</b>
+  <%= @rate.minute_rate %>
+</p>
+
+<p>
+  <b>Fixed rate:</b>
+  <%= @rate.fixed_rate %>
+</p>
+
+
+<%= link_to 'Edit', edit_rate_path(@rate) %> |
+<%= link_to 'Back', rates_path %>

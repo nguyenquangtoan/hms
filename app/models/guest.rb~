@@ -1,0 +1,5 @@
+class Guest < ActiveRecord::Base
+	has_many :bills
+	has_many :occupancies
+	has_many :rooms , :through => :occupancies
+end

@@ -1,0 +1,41 @@
+<h1>Listing bill_details</h1>
+
+<table>
+  <tr>
+    <th>Bill</th>
+    <th>Occupancy</th>
+    <th>Destination</th>
+    <th>Call time</th>
+    <th>Duration</th>
+    <th>Begin second block</th>
+    <th>Begin block rate</th>
+    <th>Minute rate</th>
+    <th>Fixed rate</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bill_details.each do |bill_detail| %>
+  <tr>
+    <td><%= bill_detail.bill %></td>
+    <td><%= bill_detail.occupancy %></td>
+    <td><%= bill_detail.destination %></td>
+    <td><%= bill_detail.call_time %></td>
+    <td><%= bill_detail.duration %></td>
+    <td><%= bill_detail.begin_second_block %></td>
+    <td><%= bill_detail.begin_block_rate %></td>
+    <td><%= bill_detail.minute_rate %></td>
+    <td><%= bill_detail.fixed_rate %></td>
+    <td><%= bill_detail.amount %></td>
+    <td><%= link_to 'Show', bill_detail %></td>
+    <td><%= link_to 'Edit', edit_bill_detail_path(bill_detail) %></td>
+    <td><%= link_to 'Destroy', bill_detail, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bill detail', new_bill_detail_path %>
