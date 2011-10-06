@@ -1,6 +1,4 @@
 Hms::Application.routes.draw do
-  
-  
 
   match 'rooms/import' => 'rooms#import'
   
@@ -19,7 +17,6 @@ Hms::Application.routes.draw do
   resources :room_types
   
   
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

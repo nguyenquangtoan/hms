@@ -20,10 +20,9 @@
     <%= f.text_field :extension %>
   </div>
   <div class="field">
-    <%= f.fields_for :room_type do |room_type_fields| %><br />
-    Room type: <%= room_type_fields.text_field :name %>
-    <% end %>
-  </div> 
+    <%= f.label :room_type_id %><br />
+    <%= f.text_field :room_type_id %>
+  </div>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
