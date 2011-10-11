@@ -1,0 +1,27 @@
+<h1>Rooms for check out</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Extension</th>
+    <th>Room type</th>
+    <th>Check in</th>
+    <th>Number occupants</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rooms.each do |room| %>
+	<tr>
+	<td><%= room.number %></td>
+	<td><%= room.extension %></td>
+	<td><%= room.room_type.name %></td>                                
+	<td><%= room.occupancies.where(:check_out => nil, :move => nil).last.check_in.in_time_zone.to_formatted_s(:long) %></td>
+	<td><%= room.occupancies.where(:check_out => nil, :move => nil).count %></td>
+	<td><%= link_to 'Detail', :action => :details, :id => room.id %></td>
+	<td><%= link_to 'Move', move_path(:room_id => room.id) %></td>
+	<td><%= link_to 'Check out', :action => :payer, :id => room.id %></td>
+	</tr>
+<% end %>
+</table>

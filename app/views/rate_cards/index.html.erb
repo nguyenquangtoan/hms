@@ -3,9 +3,7 @@
 <table>
   <tr>
     <th>Tariff name</th>
-    <th>Start date</th>
-    <th>Expriry date</th>
-    <th>Status</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,9 +12,7 @@
 <% @rate_cards.each do |rate_card| %>
   <tr>
     <td><%= rate_card.tariff_name %></td>
-    <td><%= rate_card.start_date %></td>
-    <td><%= rate_card.expriry_date %></td>
-    <td><%= rate_card.status %></td>
+    <td><%= rate_card.description %></td>
     <td><%= link_to 'Show', rate_card %></td>
     <td><%= link_to 'Edit', edit_rate_card_path(rate_card) %></td>
     <td><%= link_to 'Destroy', rate_card, :confirm => 'Are you sure?', :method => :delete %></td>

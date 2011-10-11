@@ -1,0 +1,6 @@
+<h1>Editing rate_card</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @rate_card %> |
+<%= link_to 'Back', rate_cards_path %>

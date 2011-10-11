@@ -1,0 +1,20 @@
+<h1>Add guests for check in</h1>
+
+<table>
+  <tr>
+    <th>Guest Name</th>
+    <th>Persional ID</th>       
+  </tr>
+
+<% form_tag(:action => '/checkin')%>
+<% 5.times do |t| %>
+  <tr>
+    <td><%= room.number %></td>
+    <td><%= room.extension %></td>
+    <td><%= room.room_type.name %></td>
+    <td><%= room.description %></td>
+    <td><%= link_to 'Check in', :controller => :hotel, :action => :checkin, :id => room.id %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>

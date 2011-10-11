@@ -1,0 +1,45 @@
+<%= form_for(@rate) do |f| %>
+  <% if @rate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rate.errors.count, "error") %> prohibited this rate from being saved:</h2>
+
+      <ul>
+      <% @rate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rate_card_id %><br />
+    <%= f.collection_select :rate_card_id, RateCard.all, :id, :tariff_name %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :prefix %><br />
+    <%= f.text_field :prefix %>
+  </div>
+  <div class="field">
+    <%= f.label :begin_second_block %><br />
+    <%= f.text_field :begin_second_block %>
+  </div>
+  <div class="field">
+    <%= f.label :begin_block_rate %><br />
+    <%= f.text_field :begin_block_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :minute_rate %><br />
+    <%= f.text_field :minute_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :fixed_rate %><br />
+    <%= f.text_field :fixed_rate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -7,8 +7,20 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+<div>
+<%= link_to 'Dash board', '/' %>
+<%= link_to 'Check in', available_path %>
+<%= link_to 'Check out', occupancies_path  %>
+<%= link_to 'Guests', guests_path %>
+<%= link_to 'Bills', bills_path %><br/>
+Settings:<br/>
+  <%= link_to 'Room types', room_types_path %>
+  <%= link_to 'Rooms', rooms_path %>
+  <%= link_to 'Rate cards', rate_cards_path %>
+  <%= link_to 'Rates', rates_path %>
+  <%= link_to 'Rate plans', rate_plans_path %><br/>
+</div>
+<div> <%= yield %> </div>
 </body>
 </html>
+

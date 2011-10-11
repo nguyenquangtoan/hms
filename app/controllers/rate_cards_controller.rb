@@ -80,4 +80,7 @@ class RateCardsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # class methods
+  
 end

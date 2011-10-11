@@ -12,7 +12,7 @@
 <% @guests.each do |guest| %>
   <tr>
     <td><%= guest.name %></td>
-    <td><%= guest.persional_id_number %></td>
+    <td><%= guest.personal_id_number %></td>
     <td><%= link_to 'Show', guest %></td>
     <td><%= link_to 'Edit', edit_guest_path(guest) %></td>
     <td><%= link_to 'Destroy', guest, :confirm => 'Are you sure?', :method => :delete %></td>

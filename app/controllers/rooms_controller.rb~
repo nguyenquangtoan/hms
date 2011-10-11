@@ -2,12 +2,13 @@ class RoomsController < ApplicationController
   #import extension from asterisk.users to rooms 
   def import
     users = AsteriskUser.all
-    regular_type = RoomType.find(1) 
+    regular_type = RoomType.first(:conditions => "name = \'Regular\'") 
     users.each do |user|
-      unless regular_type.rooms.exit?(:extension => user.extension)
-      regular_type.rooms.create(:number => user.extension, 
-        :extension => user.extension,
-        :description => 'imported room')
+      unless regular_type.rooms.exists?(:extension => user.extension)
+        regular_type.rooms.create(:number => user.extension, 
+          :extension => user.extension,
+          :description => 'imported room')
+      end
     end
     
     redirect_to :action => :index

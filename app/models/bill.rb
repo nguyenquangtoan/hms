@@ -1,7 +1,7 @@
 class Bill < ActiveRecord::Base
 	belongs_to :guest
-  has_many :bill_details
-  has_many :occupancies, :throught => :bill_details
+  has_many :bill_details, :dependent => :delete_all
+  has_many :occupancies, :through => :bill_details
   validates :guest_id, :total, :presence => true
   
 end

@@ -1,0 +1,24 @@
+<h1>Payer's Information</h1>
+
+<% form_tag(:action => 'checkout') do %>
+<%= radio_button_tag 'select_occupant', 'true', true %>
+<%= label_tag "Current occupant" %>
+<%= select_tag 'payer_id', options_from_collection_for_select(@occupants,:id,:name) %><br/>
+
+<%= radio_button_tag 'select_occupant', 'false' %>
+<%= label_tag "Orther guest" %><br/>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Personal ID Number</th>
+  </tr>
+  <tr>
+    <td><%= text_field_tag 'payer_name' %></td>
+    <td><%= text_field_tag 'payer_id_number' %></td>
+  </tr>
+</table>
+
+<%= submit_tag 'Submit'%><br/>
+<% end %>
+
+<%= link_to 'Back', occupancies_path%>

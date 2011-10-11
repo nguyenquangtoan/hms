@@ -1,0 +1,29 @@
+<h1>Listing rate_cards</h1>
+
+<table>
+  <tr>
+    <th>Tariff name</th>
+    <th>Start date</th>
+    <th>Expriry date</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rate_cards.each do |rate_card| %>
+  <tr>
+    <td><%= rate_card.tariff_name %></td>
+    <td><%= rate_card.start_date %></td>
+    <td><%= rate_card.expriry_date %></td>
+    <td><%= rate_card.status %></td>
+    <td><%= link_to 'Show', rate_card %></td>
+    <td><%= link_to 'Edit', edit_rate_card_path(rate_card) %></td>
+    <td><%= link_to 'Destroy', rate_card, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rate card', new_rate_card_path %>

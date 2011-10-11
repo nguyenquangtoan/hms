@@ -41,7 +41,7 @@ class RatesController < ApplicationController
   # POST /rates.xml
   def create
     @rate = Rate.new(params[:rate])
-
+    #debugger
     respond_to do |format|
       if @rate.save
         format.html { redirect_to(@rate, :notice => 'Rate was successfully created.') }
@@ -57,7 +57,6 @@ class RatesController < ApplicationController
   # PUT /rates/1.xml
   def update
     @rate = Rate.find(params[:id])
-
     respond_to do |format|
       if @rate.update_attributes(params[:rate])
         format.html { redirect_to(@rate, :notice => 'Rate was successfully updated.') }

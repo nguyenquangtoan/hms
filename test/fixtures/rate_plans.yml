@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  room_type: 
+  rate_card: 
+  start_date: 2011-10-10 10:14:28
+  expiry_date: 2011-10-10 10:14:28
+
+two:
+  room_type: 
+  rate_card: 
+  start_date: 2011-10-10 10:14:28
+  expiry_date: 2011-10-10 10:14:28

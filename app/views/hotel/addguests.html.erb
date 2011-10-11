@@ -1,0 +1,20 @@
+<h1>Add guests for check in</h1>
+
+<table>
+  <tr>
+  	<th>No.</th>
+    <th>Guest Name</th>
+    <th>Personal ID Number</th>       
+  </tr>
+
+<% form_tag({:action => 'checkin', :id => @room_id}) do%>
+  <% 5.times do |t| %>
+  	<tr>
+    	<td><%= t+1 %></td>
+    	<td><%= text_field_tag "name#{t}"  %></td>
+    	<td><%= text_field_tag "id_number#{t}" %></td>
+    	</tr>
+	<% end %>
+</table>
+  <%= submit_tag "Add guests"%><td></td>
+<% end %>

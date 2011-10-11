@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004045003) do
+ActiveRecord::Schema.define(:version => 20111007042033) do
 
   create_table "bill_details", :force => true do |t|
     t.integer  "bill_id",                                                            :null => false
@@ -35,29 +35,29 @@ ActiveRecord::Schema.define(:version => 20111004045003) do
   end
 
   create_table "guests", :force => true do |t|
-    t.string   "name",                :null => false
-    t.string   "persional_id_number", :null => false
+    t.string   "name",                                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "personal_id_number", :default => "empty", :null => false
   end
 
   create_table "occupancies", :force => true do |t|
-    t.integer  "guest_id",                      :null => false
-    t.integer  "room_id",                       :null => false
+    t.integer  "guest_id",   :null => false
+    t.integer  "room_id",    :null => false
     t.datetime "check_in"
-    t.datetime "check_out"                     
-    t.boolean  "is_paid",    :default => false, :null => false
+    t.datetime "check_out"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "move"
   end
 
   create_table "rate_cards", :force => true do |t|
-    t.string   "tariff_name",  :null => false
-    t.datetime "start_date",   :null => false
-    t.datetime "expriry_date", :null => false
-    t.boolean  "enable",       :null => false
+    t.string   "tariff_name",                 :null => false
+    t.datetime "start_date",                  :null => false
+    t.datetime "expriry_date",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "room_type_id", :default => 0, :null => false
   end
 
   create_table "rates", :force => true do |t|

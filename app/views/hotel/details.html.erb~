@@ -1,0 +1,24 @@
+<h1><%= "#{@room.name} Room Details"%></h1>
+
+Number: <%= @room.number %><br/>
+Extension: <%= @room.extension %><br/>
+Room type: <%= @room.room_type.name %><br/>
+Description: <%= @room.description %><br/>
+    
+<h2> List of Occupants </h2> 
+<table>
+  <tr>
+  	<th>No.</th>
+    <th>Occupant Name</th>
+    <th>Personal ID Number</th>       
+  </tr>
+  
+  <% @room.current_occupants.each_with_index do |occ, index| %>
+  	<tr>
+    	<td><%= index + 1 %></td>
+    	<td><%= occ.name  %></td>
+    	<td><%= occ.personal_id_number %></td>
+	</tr>
+  <% end %>
+</table>
+<%= link_to 'Back', :action => :checkout %>

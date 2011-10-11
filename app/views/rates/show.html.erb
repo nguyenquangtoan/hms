@@ -2,12 +2,12 @@
 
 <p>
   <b>Rate card:</b>
-  <%= @rate.rate_card %>
+  <%= @rate.rate_card.tariff_name %>
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @rate.type %>
+  <b>Name:</b>
+  <%= @rate.name %>
 </p>
 
 <p>
@@ -33,6 +33,11 @@
 <p>
   <b>Fixed rate:</b>
   <%= @rate.fixed_rate %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @rate.description %>
 </p>
 
 

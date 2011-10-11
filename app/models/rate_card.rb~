@@ -1,3 +1,5 @@
 class RateCard < ActiveRecord::Base
 	has_many :rates
+	
+	validates :tariff_name, :room_type_id, :start_date, :expriry_date, :enable, :presence => true
 end

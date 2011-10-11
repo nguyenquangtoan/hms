@@ -80,4 +80,9 @@ class RoomTypesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # Class methods
+  
+
+  
 end

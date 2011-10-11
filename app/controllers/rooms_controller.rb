@@ -2,11 +2,13 @@ class RoomsController < ApplicationController
   #import extension from asterisk.users to rooms 
   def import
     users = AsteriskUser.all
-    regular_type = RoomType.first(:conditions => "name = \'Regular\'") 
+    exts = Room.all.map do |r| r.extension end
+    type_id = RoomType.all.first.id
     users.each do |user|
-      unless regular_type.rooms.exists?(:extension => user.extension)
-        regular_type.rooms.create(:number => user.extension, 
+      unless exts.include?(user.extension)
+        Room.create(:number => user.extension, 
           :extension => user.extension,
+          :room_type_id => type_id,   
           :description => 'imported room')
       end
     end

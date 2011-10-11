@@ -1,0 +1,23 @@
+<h1>Choose room to move</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Extension</th>
+    <th>Room type</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+<% @rooms.each do |room| %>
+  <tr>
+    <td><%= room.number %></td>
+    <td><%= room.extension %></td>
+    <td><%= room.room_type.name %></td>
+    <td><%= room.description %></td>
+    <td><%= link_to 'Select', move_path(:new_room_id => room.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Back', occupancies_path%>

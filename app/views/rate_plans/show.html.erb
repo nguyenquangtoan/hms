@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Room type:</b>
+  <%= @rate_plan.room_type.name %>
+</p>
+
+<p>
+  <b>Rate card:</b>
+  <%= @rate_plan.rate_card.tariff_name %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @rate_plan.start_date %>
+</p>
+
+<p>
+  <b>Expiry date:</b>
+  <%= @rate_plan.expiry_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @rate_plan.status %>
+</p>
+
+<%= link_to 'Edit', edit_rate_plan_path(@rate_plan) %> |
+<%= link_to 'Back', rate_plans_path %>

@@ -1,0 +1,35 @@
+<h1>Listing rates</h1>
+
+<table>
+  <tr>
+    <th>Rate card</th>
+    <th>Type</th>
+    <th>Prefix</th>
+    <th>Begin second block</th>
+    <th>Begin block rate</th>
+    <th>Minute rate</th>
+    <th>Fixed rate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rates.each do |rate| %>
+  <tr>
+    <td><%= rate.rate_card.tariff_name %></td>
+    <td><%= rate.type %></td>
+    <td><%= rate.prefix %></td>
+    <td><%= rate.begin_second_block %></td>
+    <td><%= rate.begin_block_rate %></td>
+    <td><%= rate.minute_rate %></td>
+    <td><%= rate.fixed_rate %></td>
+    <td><%= link_to 'Show', rate %></td>
+    <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
+    <td><%= link_to 'Destroy', rate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rate', new_rate_path %>

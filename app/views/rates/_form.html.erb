@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :rate_card %><br />
-    <%= f.text_field :rate_card %>
+    <%= f.label :rate_card_id %><br />
+    <%= f.collection_select(:rate_card_id, RateCard.all, :id, :tariff_name) %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :prefix %><br />
@@ -38,6 +38,10 @@
   <div class="field">
     <%= f.label :fixed_rate %><br />
     <%= f.text_field :fixed_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 5%>
   </div>
   <div class="actions">
     <%= f.submit %>

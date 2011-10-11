@@ -1,6 +1,28 @@
 Hms::Application.routes.draw do
 
+  get "hotel/dashboard"
+  
+  match 'checkout' => 'hotel#check_occupancies', :as => :occupancies
+  
+  match 'checkin' => 'hotel#check_available', :as => :available
+  
+  match 'addguests' => 'hotel#addguests', :as => :addguests
+  
+  match 'move' => 'hotel#move', :as => :move
+  
+  match 'hotel/payer'
+  
+  match 'hotel/checkout'
+
+  post "hotel/checkin"
+  
+  get 'hotel/details'
+
+  get "hotel/checkout"
+
   match 'rooms/import' => 'rooms#import'
+  
+  resources :rate_plans
   
   resources :bill_details
 
@@ -73,5 +95,5 @@ Hms::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
-  root :to => 'home#dash_board', :as => 'home'
+  root :to => 'hotel#dashboard', :as => 'dashboard'
 end
