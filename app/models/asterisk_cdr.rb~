@@ -1,5 +1,4 @@
-class AsteriskUser < ActiveRecord::Base
-	establish_connection :asterisk_db
-	set_table_name :users
-	set_primary_key :extension
+class AsteriskCdr < ActiveRecord::Base
+	establish_connection :asteriskcdr_db
+	set_table_name :cdr
 end
