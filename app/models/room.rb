@@ -17,4 +17,7 @@ class Room < ActiveRecord::Base
     end
     occupants = Guest.find(ids)
   end
+  
+  def a
+  end
 end
