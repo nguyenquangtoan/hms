@@ -1,25 +1,47 @@
-<%= form_for(@rate_card) do |f| %>
-  <% if @rate_card.errors.any? %>
+<%= form_for(@rate_plan) do |f| %>
+  <% if @rate_plan.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@rate_card.errors.count, "error") %> prohibited this rate_card from being saved:</h2>
+      <h2><%= pluralize(@rate_plan.errors.count, "error") %> prohibited this rate_plan from being saved:</h2>
 
       <ul>
-      <% @rate_card.errors.full_messages.each do |msg| %>
+      <% @rate_plan.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+  
   <div class="field">
-    <%= f.label :tariff_name %><br />
-    <%= f.text_field :tariff_name %>
+    <%= f.label :room_type_id %><br />
+    <%= f.collection_select :room_type_id, RoomType.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :rows => 10 %>
+    <%= f.label :rate_card_id %><br />
+    <%= f.collection_select :rate_card_id, RateCard.all, :id, :tariff_name %>
   </div>
+  <!--
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.datetime_select :start_date, :default => {:hour => 00, :minute => 00}  %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :expiry_date %><br />
+    <%= f.datetime_select :expiry_date, :include_blank => true, :default => nil %>
+  </div>
+  -->
+  <div class="field">
+  <%= f.label :start_date %><br />
+  <input class = 'rate_plan[start_date]' onclick='scwShow(this,event);' value='16-Oct-2011' />
+  </div>
+  <div class="field">
+  <%= f.label :expiry_date %><br />
+  <input class = 'rate_plan[expiry_date]' onclick='scwShow(this,event);' value='' />
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

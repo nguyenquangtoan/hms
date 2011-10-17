@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  
   <div class="field">
     <%= f.label :room_type_id %><br />
     <%= f.collection_select :room_type_id, RoomType.all, :id, :name %>
@@ -18,8 +19,9 @@
   <div class="field">
     <%= f.label :rate_card_id %><br />
     <%= f.collection_select :rate_card_id, RateCard.all, :id, :tariff_name %>
-  </div>
-  
+    </div>
+    
+  <!--
   <div class="field">
     <%= f.label :start_date %><br />
     <%= f.datetime_select :start_date, :default => {:hour => 00, :minute => 00}  %>
@@ -29,8 +31,40 @@
     <%= f.label :expiry_date %><br />
     <%= f.datetime_select :expiry_date, :include_blank => true, :default => nil %>
   </div>
+  -->
   
+ <!--
+  <div class="field">
+  <%= f.label :start_date %><br />
+  <input class = 'rate_plan[start_date]' onclick='scwShow(this,event);' value='16-Oct-2011' />
+  </div>
+  <div class="field">
+  <%= f.label :expiry_date %><br />
+  <input class = 'rate_plan[expiry_date]' onclick='scwShow(this,event);' value='' />
+  </div>
+ -->
+  
+ 
+<script type="text/javascript">
+$(function() {
+
+    $('#datetime').datepicker({
+    	duration: '',
+        showTime: true,
+        constrainInput: false
+     });
+    
+});
+</script>
+
+
+
+<p><input type="text" name="datetime" id="datetime" value=""></p>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
+  
+  
 <% end %>
