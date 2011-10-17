@@ -2,7 +2,7 @@
 
 <p>
   <b>Guest:</b>
-  <%= @bill.guest.name %>
+  <%= @bill.guest %>
 </p>
 
 <p>
@@ -29,19 +29,18 @@
 		<th>Amount</th>
 	</tr>
 	<tr>
-		<td><%= id + 1 %></td>
+		<td>id + 1</td>
 		<td><%= d.room.number %></td>
 		<td><%= d.room.extension %></td>
 		<td><%= d.call_time %></td>
 		<td><%= d.destination %></td>
 		<td><%= d.duration %></td>
 		<td><%= d.begin_second_block %></td>
-		<td><%= d.begin_block_rate %></td>
+		<td><%= d.begin_block_Rate %></td>
 		<td><%= d.minute_rate %></td>
 		<td><%= d.fixed_rate %></td>
 		<td><%= d.amount %></td>
 	</tr>
-<% end %>
 	<tr>
 		<td></td>
 		<td></td>
@@ -57,7 +56,7 @@
 	</tr>
 </table>
 
-
+<% end %>
 
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
 <%= link_to 'Back', bills_path %>

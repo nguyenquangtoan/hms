@@ -1,23 +1,24 @@
-<h1>Choose room to move</h1>
+<h1>Payer's Information</h1>
 
+<% form_tag(:action => 'checkout') do %>
+<%= radio_button_tag 'select_occupant', 'true', true %>
+<%= label_tag "Current occupant" %>
+<%= select_tag 'payer_id', options_from_collection_for_select(@occupants,:id,:name) %><br/>
+
+<%= radio_button_tag 'select_occupant', 'false' %>
+<%= label_tag "Other guest" %><br/>
 <table>
   <tr>
-    <th>Number</th>
-    <th>Extension</th>
-    <th>Room type</th>
-    <th>Description</th>
-    <th></th>
+    <th>Name</th>
+    <th>Personal ID Number</th>
   </tr>
-
-<% @rooms.each do |room| %>
   <tr>
-    <td><%= room.number %></td>
-    <td><%= room.extension %></td>
-    <td><%= room.room_type.name %></td>
-    <td><%= room.description %></td>
-    <td><%= link_to 'Select', move_path(:new_room_id => room.id) %></td>
+    <td><%= text_field_tag 'payer_name' %></td>
+    <td><%= text_field_tag 'payer_id_number' %></td>
   </tr>
-<% end %>
 </table>
+
+<%= submit_tag 'Submit'%><br/>
+<% end %>
 
 <%= link_to 'Back', occupancies_path%>

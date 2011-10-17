@@ -12,8 +12,8 @@
 
 <% @bills.each_with_index do |bill,index| %>
   <tr>
-  	<td><%= index + 1 %></td>
-    <td><%= bill.guest.name %></td>
+  	<td><%= index %></td>
+    <td><%= bill.guest %></td>
     <td><%= bill.total %></td>
     <td><%= link_to 'Show', bill %></td>
     <td><%= link_to 'Edit', edit_bill_path(bill) %></td>

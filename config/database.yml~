@@ -6,27 +6,36 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: hotel_development
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: phuc
-  password: zxcvbn
-  host: 10.0.0.240
+  timeout: 5000
+  
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: hotel_development
+#  pool: 5
+#  username: phuc
+#  password: zxcvbn
+#  host: 10.0.0.242
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: hotel_test
+  adapter: sqlite3
+  database: db/test.sqlite3
   pool: 5
-  username: phuc
-  password: zxcvbn
-  host: 10.0.0.240
+  timeout: 5000
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: hotel_test
+#  pool: 5
+#  username: phuc
+#  password: zxcvbn
+#  host: 10.0.0.242
 
 production:
   adapter: mysql2
@@ -36,7 +45,7 @@ production:
   pool: 5
   username: phuc
   password: zxcvbn
-  host: 10.0.0.240
+  host: 10.0.0.242
 
 # External database
 asterisk_db:
@@ -47,7 +56,7 @@ asterisk_db:
   pool: 5
   username: phuc
   password: zxcvbn
-  host: 10.0.0.240
+  host: 10.0.0.242
 
 asteriskcdr_db:
   adapter: mysql2
@@ -57,5 +66,5 @@ asteriskcdr_db:
   pool: 5
   username: phuc
   password: zxcvbn
-  host: 10.0.0.240
+  host: 10.0.0.242
 
