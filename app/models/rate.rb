@@ -4,4 +4,8 @@ class Rate < ActiveRecord::Base
   validates :begin_second_block, :begin_block_rate, :minute_rate, :fixed_rate, :numericality => true, :allow_nil => true
   validates :prefix, :numericality => true
   
+  def applicable_for_dest?(destination)
+    return destination[0, self.prefix.length] == self.prefix
+  end
+  
 end

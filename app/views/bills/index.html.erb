@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>No.</th>
     <th>Guest</th>
     <th>Total</th>
     <th></th>
@@ -9,9 +10,10 @@
     <th></th>
   </tr>
 
-<% @bills.each do |bill| %>
+<% @bills.each_with_index do |bill,index| %>
   <tr>
-    <td><%= bill.guest %></td>
+  	<td><%= index + 1 %></td>
+    <td><%= bill.guest.name %></td>
     <td><%= bill.total %></td>
     <td><%= link_to 'Show', bill %></td>
     <td><%= link_to 'Edit', edit_bill_path(bill) %></td>

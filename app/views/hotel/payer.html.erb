@@ -6,7 +6,7 @@
 <%= select_tag 'payer_id', options_from_collection_for_select(@occupants,:id,:name) %><br/>
 
 <%= radio_button_tag 'select_occupant', 'false' %>
-<%= label_tag "Orther guest" %><br/>
+<%= label_tag "Other guest" %><br/>
 <table>
   <tr>
     <th>Name</th>
@@ -16,6 +16,37 @@
     <td><%= text_field_tag 'payer_name' %></td>
     <td><%= text_field_tag 'payer_id_number' %></td>
   </tr>
+</table>
+
+<h3> Occupancies </h3>
+<table>
+  <tr>
+	<th>Room ID</th>
+	<th>Start</th>
+	<th>End</th>
+	<th></th>
+  </tr>
+  <tr>
+  	<td><%= @room.id %></td>
+	<td><%= @current_period[:start] %></td>
+	<td><%= @current_period[:end] %></td>
+	<td><%= check_box_tag 'cbx_name', 'cbx_value' %></td>
+  <tr>
+  <% @force_room_periods.each do |id,p| %>
+  	<tr>
+  	<td><%= id %></td>
+	<td><%= p[:start] %></td>
+	<td><%= p[:end] %></td>
+	<tr>
+  <% end %>
+  <% @option_room_periods.each do |id,p| %>
+  	<tr>
+  	<td><%= id %></td>
+	<td><%= p[:start] %></td>
+	<td><%= p[:end] %></td>
+	<td><%= check_box_tag "option_#{id}"%></td>
+	<tr>
+  <% end %>
 </table>
 
 <%= submit_tag 'Submit'%><br/>

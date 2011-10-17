@@ -2,13 +2,61 @@
 
 <p>
   <b>Guest:</b>
-  <%= @bill.guest %>
+  <%= @bill.guest.name %>
 </p>
 
 <p>
   <b>Total:</b>
   <%= @bill.total %>
 </p>
+
+<p>
+  <b>Bill Details:</b>
+</p>
+<% @bill.bill_details.each_with_index do |d,id|%>
+<table>
+	<tr>
+		<th>No.</th>
+		<th>Room</th>
+		<th>Extension</th>
+		<th>Call Time</th>
+		<th>Destination</th>
+		<th>Duration</th>
+		<th>Begin Block</th>
+		<th>Begin Block Rate</th>
+		<th>Minute Rate</th>
+		<th>Fixed Rate</th>
+		<th>Amount</th>
+	</tr>
+	<tr>
+		<td><%= id + 1 %></td>
+		<td><%= d.room.number %></td>
+		<td><%= d.room.extension %></td>
+		<td><%= d.call_time %></td>
+		<td><%= d.destination %></td>
+		<td><%= d.duration %></td>
+		<td><%= d.begin_second_block %></td>
+		<td><%= d.begin_block_rate %></td>
+		<td><%= d.minute_rate %></td>
+		<td><%= d.fixed_rate %></td>
+		<td><%= d.amount %></td>
+	</tr>
+<% end %>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Total: </td>
+		<td><%= @bill.total %></td>
+	</tr>
+</table>
+
 
 
 <%= link_to 'Edit', edit_bill_path(@bill) %> |

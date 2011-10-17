@@ -10,26 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011040618) do
+ActiveRecord::Schema.define(:version => 20111014025941) do
 
   create_table "bill_details", :force => true do |t|
-    t.integer  "bill_id",                                                            :null => false
-    t.integer  "occupancy_id",                                                       :null => false
-    t.string   "destination",                                                        :null => false
-    t.datetime "call_time",                                                          :null => false
-    t.integer  "duration",                                          :default => 0,   :null => false
+    t.integer  "bill_id",                             :null => false
+    t.string   "destination",                         :null => false
+    t.datetime "call_time",                           :null => false
+    t.integer  "duration",           :default => 0,   :null => false
     t.integer  "begin_second_block"
-    t.decimal  "begin_block_rate",   :precision => 10, :scale => 4
-    t.decimal  "minute_rate",        :precision => 10, :scale => 4
-    t.decimal  "fixed_rate",         :precision => 10, :scale => 4
-    t.decimal  "amount",             :precision => 10, :scale => 4, :default => 0.0, :null => false
+    t.decimal  "begin_block_rate"
+    t.decimal  "minute_rate"
+    t.decimal  "fixed_rate"
+    t.decimal  "amount",             :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "room_id"
   end
 
   create_table "bills", :force => true do |t|
-    t.integer  "guest_id",                    :null => false
-    t.decimal  "total",      :default => 0.0, :null => false
+    t.integer  "guest_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

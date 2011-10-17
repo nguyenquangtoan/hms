@@ -61,6 +61,7 @@ class HotelController < ApplicationController
   
   def move    
     if params[:new_room_id].nil?
+      #TODO should add all room whether they free or not
       occus = Occupancy.all
       used_ids = []
       occus.each do |occu|
@@ -108,18 +109,108 @@ class HotelController < ApplicationController
 
   def payer
     session[:room_id] = params[:id]
-    room = Room.find(params[:id])
-    @occupants = room.current_occupants
+    @room = Room.find(params[:id])
+    @occupants = @room.current_occupancy_occupants
+    @current_period = @room.current_occupancy_period
+    @force_room_periods = {}
+    @option_room_periods = {}
+    @occupants.each do |o|
+      o.moved_rooms.each do |r|
+        r.move_occupancy_periods_of_guest(o.id).each do |p|
+          pants = r.occupants_of_period(p)
+          minus = @occupants - pants
+          if minus.count >= 1
+            stay = false
+            minus.each do |m|
+              if m.stay_now? 
+                stay = true
+                break
+              end
+            end
+            if stay
+              @option_room_periods.store(r.id, p)
+            else
+              @force_room_periods.store(r.id, p)
+            end
+          else
+            @force_room_periods.store(r.id,p)
+          end # minus.count >=1
+        end # r
+      end # o
+    end # @occupants
+    session[:force_room_periods] = @force_room_periods
+    session[:option_room_periods] = @option_room_periods
   end
   
   def checkout
-    #if params[:select_occupant]
-      #payer = Guest.find(params[:payer_id])
-    #elsif Guest.exists?(:personal_id_number => params[:payer_id])
+    # get payer's information (guest_id)
+    if params[:select_occupant]
+      guest_id = params[:payer_id]
+    else
+      if Guest.exists?(params[:payer_id_number])
+        guest_id = Guest.where(:personal_id_number => params[:payer_id_number]).first.id
+      else
+        #temp
+        guest_id = Guest.create!(:name => params[:payer_name], :payer_id_number => params[:payer_id_number]).id
+      end
+    end
+    
+    #create bill
+    bill = Bill.create!(:guest_id => guest_id) 
+    
+    # current period
+    periods = {}
+    periods.store(session[:room_id], Room.find(session[:room_id]).current_occupancy_period)
+    session[:room_id] = nil
+    
+    # extra periods
+    unless session[:force_room_periods].empty?
+      periods.update(session[:force_room_periods])  
+      session[:force_room_periods] = nil
+    end
+    session[:option_room_periods].each do |id,p|
+      unless params["option#{id}"].nil?
+        periods.store(id,p)
+      end
+    end
+    session[:option_room_periods] = nil
+    
+    # calculate bill
+    periods.each do |room_id, period|
+      room = Room.find(room_id)
+      calls = AsteriskCdr.calls_from_src_number(room.extension, period)
+      rate_card = room.current_rate_card
+      #debugger
+      calls.each do |c|
+        r = rate_card.rate_for_dest_number(c.dst)
+        detail = BillDetail.new(:bill_id => bill.id, :room_id => room_id, :destination => c.dst, :call_time => c.calldate, :duration => c.duration, :begin_second_block => r.begin_second_block, :begin_block_rate => r.begin_block_rate, :minute_rate => r.minute_rate, :fixed_rate => r.fixed_rate)
+        
+        amount = 0
+        unless r.fixed_rate.nil?
+          # cal fixed rate for call
+          amount += r.fixed_rate
+        end
+        
+        if !r.begin_second_block.nil?
+          # cal begin block rate for call
+          amount += r.begin_block_rate
+          if c.duration > r.begin_second_block
+            res_duration = c.duration - r.begin_second_block
+            amount += res_duration * (r.minute_rate/60.0)
+          end
+        elsif !r.minute_rate.nil? 
+          amount += c.duration * (r.minute_rate/60.0)
+        end
+        
+        detail.amount = amount
+        detail.save!
+      end # calls.each
       
-   # end
+      room.check_out_occupants_for_period period
+    end # period.each
+   
+    redirect_to occupancies_path
   end
-  
   
 
 end
