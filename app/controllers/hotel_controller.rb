@@ -40,18 +40,18 @@ class HotelController < ApplicationController
   def checkin
   	  #debugger
     room_id = params[:id]
-    no_loop = params[:no_of_row]  
-    no_loop.times do |t|
-      id_number = params["id_number#{t}"]
-      if !id_number.empty?  
-        guest = Guest.where(:personal_id_number => id_number).first
-        if guest.nil?
-          guest = Guest.create!(:name => params["name#{t}"],:personal_id_number => id_number)
-          end
-        #debugger
-        Occupancy.create!(:guest_id => guest.id, :room_id => room_id, :check_in => Time.now)
-      end
-    end 
+    t = 0
+    while 0 < 1
+    	    break if params["name#{t}"] == nil
+    	   id_number = params["id_number#{t}"]
+	   guest = Guest.where(:personal_id_number => id_number).first
+	   if guest.nil?
+		   guest = Guest.create!(:name => params["name#{t}"],:personal_id_number => id_number)
+	   end
+	   Occupancy.create!(:guest_id => guest.id, :room_id => room_id, :check_in => Time.now)
+    	   t += 1
+   end
+
     redirect_to :action => :check_available
   end
 

@@ -1,23 +1,72 @@
-<h1>Add guests for check in</h1>
+<script type="text/javascript">
+function addTextField() 
+{
+	var id = $('#Inputs #myTable tr').size();
+	$("#myTable").append("<tr id='row" + id + "'><th align = 'left' width = '80'>" 
+		+ id + "</th><th align = 'left' width = '300'><input type='text' name='name" 
+		+ id + "'></input></th><th align = 'left' width = '300'><input type='text' name='id_number" 
+		+ id + "'></input></th><a href='#' onClick='removeTextField(" + id + "); return false;'>Remove</a></tr>");
+}
+function removeTextField(id)
+{
+	
+	$("#row" + id).remove();
+	
+	
+	$('#Inputs #myTable tr').each(function(index)
+	{
+		if(index >= $(this).index() && index >= 1)
+		{
+			$(this).children().eq(0).html(index);
+		}
+	});
 
+}
+</script>
+
+<!--
+<h1>Add guests for check in</h1>
 <table>
   <tr>
   <th width = '20'>No.</th>
     <th width = '300'>Guest Name</th>
-    <th width = '300'>Personal ID Number</th>       
+    <th width = '300'>Personal ID Number
+    </th>       
   </tr>
   
-
 <% form_tag({:action => 'checkin', :id => @room_id}) do%>
   <% 5.times do |t| %>
   	<tr>
-  	
     	<td><%= t+1 %></td>
     	<td><%= text_field_tag "name#{t}"  %></td>
     	<td><%= text_field_tag "id_number#{t}" %></td>
     	</tr>
-	<% end %>
-
+    	<% end %>
+    <br>
+<input type = 'submit'></input>	
+<% end%>
 </table>
+-->
 
 
+<%= form_tag({:action => 'checkin', :id => @room_id}) do%>
+<div id="Inputs">
+<table id = "myTable">
+  <tr>
+  <th align = 'left' width = '80'>No.</th><th align = 'left' width = '300'>Guest Name</th>
+  <th align = 'left' width = '300'>Personal ID Number</th>
+  </tr>
+  
+   
+</table>
+<input type = 'submit'></input>
+</div>
+<% end %>
+
+<p>
+<a href="#" onClick="addTextField(); return false;">Add</a></p>
+
+
+
+
+<%= link_to 'Back', "checkin" %>

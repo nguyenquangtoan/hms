@@ -38,9 +38,10 @@ class HotelController < ApplicationController
   end
   
   def checkin
-  	  debugger
-    room_id = params[:id]    
-    5.times do |t|
+  	  #debugger
+    room_id = params[:id]
+    no_loop = params[:no_of_row]  
+    no_loop.times do |t|
       id_number = params["id_number#{t}"]
       if !id_number.empty?  
         guest = Guest.where(:personal_id_number => id_number).first
@@ -108,21 +109,6 @@ class HotelController < ApplicationController
 
   def payer
     session[:room_id] = params[:id]
-<<<<<<< HEAD
-    room = Room.find(params[:id])
-    @occupants = room.current_occupants
-  end
-  
-  def checkout
-    #if params[:select_occupant]
-      #payer = Guest.find(params[:payer_id])
-    #elsif Guest.exists?(:personal_id_number => params[:payer_id])
-      
-   # end
-  end
-  
-  
-=======
     @room = Room.find(params[:id])
     @occupants = @room.current_occupancy_occupants
     @current_period = @room.current_occupancy_period
@@ -194,10 +180,10 @@ class HotelController < ApplicationController
       room = Room.find(room_id)
       calls = AsteriskCdr.calls_from_src_number(room.extension, period)
       rate_card = room.current_rate_card
-      
+      #debugger
       calls.each do |c|
-        rate = rate_card.rate_for_dest_number c.dst
-        detail = BillDetail.new(:bill_id => bill.id, :room_id => room_id, :destination => r.dst, :call_time => r.calldate, :duration => r.duration, :begin_second_block => r.begin_second_block, :begin_block_rate => r.begin_block_rate, :minute_rate => r.minute_rate, :fixed_rate => r.fixed_rate)
+        r = rate_card.rate_for_dest_number(c.dst)
+        detail = BillDetail.new(:bill_id => bill.id, :room_id => room_id, :destination => c.dst, :call_time => c.calldate, :duration => c.duration, :begin_second_block => r.begin_second_block, :begin_block_rate => r.begin_block_rate, :minute_rate => r.minute_rate, :fixed_rate => r.fixed_rate)
         
         amount = 0
         unless r.fixed_rate.nil?
@@ -218,10 +204,13 @@ class HotelController < ApplicationController
         
         detail.amount = amount
         detail.save!
-      end
-    end
+      end # calls.each
+      
+      room.check_out_occupants_for_period period
+    end # period.each
+   
+    redirect_to occupancies_path
   end
   
->>>>>>> dc5da00ad5066aa04c290464888bc3b56111f840
 
 end
