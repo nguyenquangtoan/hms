@@ -29,7 +29,7 @@ class HotelController < ApplicationController
     end
    
     @rooms = Room.where(:id => used_ids)
-        
+    #debugger    
     render :checkout
   end
 
@@ -38,6 +38,7 @@ class HotelController < ApplicationController
   end
   
   def checkin
+  	  debugger
     room_id = params[:id]    
     5.times do |t|
       id_number = params["id_number#{t}"]
@@ -104,8 +105,20 @@ class HotelController < ApplicationController
     end  
   end
 
-  def checkout
-    
+  def payer
+    session[:room_id] = params[:id]
+    room = Room.find(params[:id])
+    @occupants = room.current_occupants
   end
+  
+  def checkout
+    #if params[:select_occupant]
+      #payer = Guest.find(params[:payer_id])
+    #elsif Guest.exists?(:personal_id_number => params[:payer_id])
+      
+   # end
+  end
+  
+  
 
 end

@@ -1,3 +1,29 @@
+<script type="text/javascript">
+function addTextField() 
+{
+	var id = $('#Inputs #myTable tr').size();
+	$("#myTable").append("<tr id='row" + id + "'><th align = 'left' width = '80'>" 
+		+ id + "</th><th align = 'left' width = '300'><input class = 'field' type='text' name='guest[name]" 
+		+ id + "'></input></th><th align = 'left' width = '300'><input class = 'field' type='text' name='personal_id_number" 
+		+ id + "'></input></th><a href='#' onClick='removeTextField(" + id + "); return false;'>Remove</a></tr>");
+}
+function removeTextField(id)
+{
+	
+	$("#row" + id).remove();
+	
+	
+	$('#Inputs #myTable tr').each(function(index)
+	{
+		if(index >= $(this).index() && index >= 1)
+		{
+			$(this).children().eq(0).html(index);
+		}
+	});
+
+}
+</script>
+
 <%= form_for(@guest) do |f| %>
   <% if @guest.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +36,9 @@
       </ul>
     </div>
   <% end %>
-
+  
+  
+  <!--
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -22,4 +50,24 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  -->
+
+  <form action="#" method="get" id="form1">
+<input type="hidden" id="id" value="1">
+<div id="Inputs">
+<table id = "myTable">
+  <tr>
+  <th align = 'left' width = '80'>No.</th><th align = 'left' width = '300'>Guest Name</th><th align = 'left' width = '300'>Personal ID Number</th>
+  </tr>
+</table>
+</div>
+<p>
+<a href="#" onClick="addTextField(); return false;">Add</a></p>
+<div class = 'actions'>
+<input type = 'submit'></input>
+</div>
+</p>
+</form>
+
 <% end %>
+

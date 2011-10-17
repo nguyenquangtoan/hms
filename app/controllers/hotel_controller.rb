@@ -38,8 +38,10 @@ class HotelController < ApplicationController
   end
   
   def checkin
-    room_id = params[:id]    
-    5.times do |t|
+  	  #debugger
+    room_id = params[:id]
+    no_loop = params[:no_of_row]  
+    no_loop.times do |t|
       id_number = params["id_number#{t}"]
       if !id_number.empty?  
         guest = Guest.where(:personal_id_number => id_number).first
