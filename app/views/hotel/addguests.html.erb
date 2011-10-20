@@ -13,6 +13,7 @@ function removeTextField(id)
 	$("#row" + id).remove();
 	
 	
+	
 	$('#Inputs #myTable tr').each(function(index)
 	{
 		if(index >= $(this).index() && index >= 1)
@@ -56,17 +57,12 @@ function removeTextField(id)
   <th align = 'left' width = '80'>No.</th><th align = 'left' width = '300'>Guest Name</th>
   <th align = 'left' width = '300'>Personal ID Number</th>
   </tr>
-  
-   
 </table>
 <input type = 'submit'></input>
 </div>
 <% end %>
-
+<>
 <p>
 <a href="#" onClick="addTextField(); return false;">Add</a></p>
-
-
-
 
 <%= link_to 'Back', "checkin" %>
