@@ -4,8 +4,8 @@ function addTextField()
 	var id = $('#Inputs #myTable tr').size();
 	$("#myTable").append("<tr id='row" + id + "'><th align = 'left' width = '80'>" 
 		+ id + "</th><th align = 'left' width = '300'><input class = 'field' type='text' name='guest[name]" 
-		+ id + "'></input></th><th align = 'left' width = '300'><input class = 'field' type='text' name='personal_id_number" 
-		+ id + "'></input></th><a href='#' onClick='removeTextField(" + id + "); return false;'>Remove</a></tr>");
+		+ "'></input></th><th align = 'left' width = '300'><input class = 'field' type='text' name='guest[personal_id_number]" 
+		+ "'></input></th><a href='#' onClick='removeTextField(" + id + "); return false;'>Remove</a></tr>");
 }
 function removeTextField(id)
 {
@@ -25,20 +25,20 @@ function removeTextField(id)
 </script>
 
 <%= form_for(@guest) do |f| %>
-  <% if @guest.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
-
-      <ul>
-      <% @guest.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	  <% if @guest.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+	
+	      <ul>
+		      <% @guest.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
   
+ <!-- 
   
-  <!--
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -50,11 +50,10 @@ function removeTextField(id)
   <div class="actions">
     <%= f.submit %>
   </div>
-  -->
+-->  
 
-<form action="#" method="get" id="form1">
-<input type="hidden" id="id" value="1">
-<div id="Inputs">
+
+<div id="Inputs" class = "field">
 <table id = "myTable">
   <tr>
   <th align = 'left' width = '80'>No.</th><th align = 'left' width = '300'>Guest Name</th><th align = 'left' width = '300'>Personal ID Number</th>
@@ -67,7 +66,7 @@ function removeTextField(id)
 <input type = 'submit'></input>
 </div>
 </p>
-</form>
+
 
 <% end %>
 

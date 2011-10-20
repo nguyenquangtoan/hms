@@ -52,7 +52,7 @@ function removeTextField(id)
   </div>
   -->
 
-  <form action="#" method="get" id="form1">
+<form action="#" method="get" id="form1">
 <input type="hidden" id="id" value="1">
 <div id="Inputs">
 <table id = "myTable">

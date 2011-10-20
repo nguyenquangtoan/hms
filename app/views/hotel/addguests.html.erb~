@@ -58,12 +58,21 @@ function removeTextField(id)
   <th align = 'left' width = '80'>No.</th><th align = 'left' width = '300'>Guest Name</th>
   <th align = 'left' width = '300'>Personal ID Number</th>
   </tr>
-
+<<<<<<< HEAD
+=======
+  
   <input type = 'submit'></input>
+>>>>>>> origin/master
 </table>
 </div>
+<<<<<<< HEAD
 <% end %>
+<>
+=======
+<% end%>
 
-<p><a href="#" onClick="addTextField(); return false;">Add</a></p>
+>>>>>>> origin/master
+<p>
+<a href="#" onClick="addTextField(); return false;">Add</a></p>
 
 <%= link_to 'Back', "checkin" %>
